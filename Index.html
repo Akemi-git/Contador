@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosso Amor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#ffe6f0, #fff);
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.5rem;
+      color: #b30059;
+      font-weight: bold;
+    }
+
+    #contador {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #800040;
+    }
+
+    .cartinha {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .cartinha button {
+      background-color: #ff6699;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cartinha button:hover {
+      background-color: #e6005c;
+    }
+
+    .texto-cartinha {
+      max-width: 90%;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: none;
+      color: #4d0039;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    /* 🌸 Árvore estilo Sakura */
+    .arvore-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .arvore {
+      width: 40px;
+      height: 160px;
+      background: #a64d79; /* tronco rosado */
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .arvore::before,
+    .arvore::after {
+      content: '';
+      position: absolute;
+      background: pink;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    .arvore::before {
+      width: 180px;
+      height: 160px;
+      left: -70px;
+      top: -130px;
+      background: #ff99cc; /* copa maior */
+    }
+
+    .arvore::after {
+      width: 140px;
+      height: 130px;
+      left: -50px;
+      top: -110px;
+      background: #ffb6d9; /* copa menor */
+    }
+
+    /* 💗 Folhas de coração */
+    .folha {
+      position: fixed;
+      top: -40px;
+      width: 20px;
+      height: 20px;
+      background: #ff99cc;
+      transform: rotate(45deg);
+      animation: cair 12s linear;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .folha::before,
+    .folha::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff99cc;
+      border-radius: 50%;
+    }
+
+    .folha::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .folha::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    iframe {
+      display: block;
+      margin: 40px auto;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Nossos destinos estão ligados há:</header>
+  <div id="contador"></div>
+
+  <div class="cartinha">
+    <button onclick="abrirCartinha()">Clique aqui para ler a cartinha 💌</button>
+  </div>
+
+  <div class="texto-cartinha" id="mensagem">
+    Já que estamos aqui, porque não eternizar nossa data, o dia que você me conquistou, o dia que você ficou tão importante pra mim, meu amor isso daqui pra frente vai ser o contador dos nossos dias juntos, até o dia que poderemos contar os dias juntos lado a lado.❤️
+  </div>
+
+  <!-- Música Spotify -->
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2UgI0uGvh0bYFdBkYK9Acg?utm_source=generator&theme=0"
+    width="100%" height="152" frameBorder="0" allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+  </iframe>
+
+  <!-- Árvore estilo Sakura -->
+  <div class="arvore-container">
+    <div class="arvore"></div>
+  </div>
+
+  <script>
+    const inicio = new Date("2025-02-19T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      let diff = agora - inicio;
+
+      const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+      diff -= anos * 1000 * 60 * 60 * 24 * 365.25;
+
+      const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+      diff -= meses * 1000 * 60 * 60 * 24 * 30.44;
+
+      const semanas = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+      diff -= semanas * 1000 * 60 * 60 * 24 * 7;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= dias * 1000 * 60 * 60 * 24;
+
+      const horas = Math.floor(diff / (1000 * 60 * 60));
+      diff -= horas * 1000 * 60 * 60;
+
+      const minutos = Math.floor(diff / (1000 * 60));
+      diff -= minutos * 1000 * 60;
+
+      const segundos = Math.floor(diff / 1000);
+
+      document.getElementById("contador").innerHTML =
+        `${anos} anos, ${meses} meses, ${semanas} semanas, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+    }
+
+    function abrirCartinha() {
+      const msg = document.getElementById("mensagem");
+      msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+    // 🌸 Menor frequência de folhas
+    setInterval(() => {
+      const folha = document.createElement('div');
+      folha.className = 'folha';
+      folha.style.left = Math.random() * window.innerWidth + 'px';
+      folha.style.animationDuration = (10 + Math.random() * 5) + 's';
+      document.body.appendChild(folha);
+      setTimeout(() => folha.remove(), 14000);
+    }, 1500); // menor quantidade: 1 coração a cada 1.5s
+  </script>
+
+</body>
+</html>
